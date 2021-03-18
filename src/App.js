@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [drumPads, setDrumPads] = useState([])
+  const [drumPadName, setdrumPadName] = useState()
   console.log(drumPads)
+  console.log(drumPadName)
 
   useEffect(() => {
     let padElements = document.getElementById('pad-bank');
@@ -22,9 +24,11 @@ function App() {
 
   const playSound = (button) => {
     console.log(`Pressed button is ${button}`);
-    for(const pads of drumPads) {
-      if(pads.textContent === button) {
-        const currentSound = pads.childNodes[0];
+    for(const pad of drumPads) {
+      if(pad.textContent === button) {
+        console.log(pad.id);
+        setdrumPadName(pad.id)
+        const currentSound = pad.childNodes[0];
         currentSound.play();
       }
     }
@@ -33,6 +37,9 @@ function App() {
   return (
     <div className="App">
       <div id="drum-machine">
+        <div id="display"className="pad-display">
+          <h1>{drumPadName}</h1>
+        </div>
         <div id="pad-bank" className="pad-bank">
           <div id="heater-1" className="drum-pad">
             <audio id="Q" className="clip" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"></audio>
@@ -70,9 +77,6 @@ function App() {
             <audio id="C" className="clip" src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"></audio>
             C
           </div>
-        </div>
-        <div className="control-container">
-          <div id="display" className="display"></div>
         </div>
       </div>
     </div>
