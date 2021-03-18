@@ -2,16 +2,16 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [drumPads, setDrumPads] = useState([])
-  const [drumPadName, setdrumPadName] = useState("Press a button")
-  console.log(drumPads)
-  console.log(drumPadName)
+  const [drumPads, setDrumPads] = useState([]);
+  const [drumPadName, setdrumPadName] = useState("Press a button");
 
+  // Get all the pad elements
   useEffect(() => {
     let padElements = document.getElementById('pad-bank');
     setDrumPads(padElements.childNodes);
   },[])
 
+  // Event listeners
   document.addEventListener('keydown', function(event){
     const pressedButton = event.key;
     playSound(pressedButton.toUpperCase());
@@ -22,12 +22,13 @@ function App() {
     playSound(clickedButton);
   });
 
+  // This function will play the sounds of the clicked/pressed buttons
   const playSound = (button) => {
-    console.log(`Pressed button is ${button}`);
+    // Loop over the drum pad elements
     for(const pad of drumPads) {
+      // If the drum pad element matches the passed in button, play the audio tag on the drum pad element
       if(pad.textContent === button) {
-        console.log(pad.id);
-        setdrumPadName(pad.id)
+        setdrumPadName(pad.id);
         const currentSound = pad.childNodes[0];
         currentSound.play();
       }
