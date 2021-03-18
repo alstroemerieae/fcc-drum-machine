@@ -1,31 +1,63 @@
+:root {
+  --black: #000000ff;
+  --oxford-blue: #14213dff;
+  --orange-web: #fca311ff;
+  --platinum: #e5e5e5ff;
+  --white: #ffffffff;
+}
+
 .App {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+  min-height: 100vh;
+  
   font-size: calc(10px + 2vmin);
-  color: white;
   text-align: center;
+  color: white;
+  background-color: #282c34;
 }
 
 #drum-machine {
-  border: 1px solid red;
+  padding: 2rem;
+  
+  background: var(--black);
+}
+
+.pad-display {
+  color: var(--oxford-blue);
+  background: var(--platinum);
 }
 
 .pad-bank {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  border: 1px solid green;
+  
+  padding: 1rem;
+  
+  background: var(--oxford-blue);
 }
 
 .drum-pad {
-  border: 1px solid blue;
-  width: 10rem;
-  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  width: 10rem;
+  height: 10rem;
+  
+  cursor: pointer;
+  color: var(--oxford-blue);
+  background: var(--white);
+}
+
+.drum-pad:hover {
+  background: var(--platinum);
+}
+
+.drum-pad:active {
+  background: var(--orange-web);
 }

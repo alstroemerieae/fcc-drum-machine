@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [drumPads, setDrumPads] = useState([])
-  const [drumPadName, setdrumPadName] = useState()
+  const [drumPadName, setdrumPadName] = useState("Press a button")
   console.log(drumPads)
   console.log(drumPadName)
 
@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <div id="drum-machine">
-        <div id="display"className="pad-display">
+        <div id="display" className="pad-display">
           <h1>{drumPadName}</h1>
         </div>
         <div id="pad-bank" className="pad-bank">
